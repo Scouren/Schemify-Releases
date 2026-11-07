@@ -12,9 +12,10 @@
       lib = nixpkgs.lib;
       sources = lib.importJSON ./sources.json;
       latest = lib.last (lib.sort lib.versionOlder (lib.attrNames sources));
+      # Intel macOS is not here: nixpkgs unstable dropped x86_64-darwin; Intel Macs use the
+      # Homebrew tap (brew install scouren/schemify/schemify).
       systems = [
         "x86_64-linux"
-        "x86_64-darwin"
         "aarch64-darwin"
       ];
       eula = {
